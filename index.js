@@ -6,9 +6,9 @@ const { getStoredItems, storeItems } = require('./data/items');
 
 const app = express();
 
+app.use(cors({ origin: 'http://localhost:5173' }));
 app.use(bodyParser.json());
 app.use(express.json())
-app.use(cors());
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
