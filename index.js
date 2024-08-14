@@ -1,11 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-//p 
+const cors = require("cors");
+
 const { getStoredItems, storeItems } = require('./data/items');
 
 const app = express();
 
 app.use(bodyParser.json());
+app.use(cors());
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
