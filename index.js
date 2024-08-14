@@ -23,13 +23,14 @@ app.get("/", (req, res)=> {
 app.get('/items', async (req, res) => {
   const storedItems = await getStoredItems();
   await new Promise((resolve, reject) => setTimeout(() => resolve(), 2000));
-  res.json({ items: storedItems });
+  res.send("Items");
+  return res.json({ items: storedItems });
 });
 
 app.get('/items/:id', async (req, res) => {
   const storedItems = await getStoredItems();
   const item = storedItems.find((item) => item.id === req.params.id);
-  res.json({ item });
+  return res.json({ item });
 });
 
 app.post('/items', async (req, res) => {
@@ -41,7 +42,7 @@ app.post('/items', async (req, res) => {
   };
   const updatedItems = [newItem, ...existingItems];
   await storeItems(updatedItems);
-  res.status(201).json({ message: 'Stored new item.', item: newItem });
+  return res.status(201).json({ message: 'Stored new item.', item: newItem });
 });
 
 app.listen(8080, console.log("server is running on port 8080"));
