@@ -7,6 +7,7 @@ const { getStoredItems, storeItems } = require('./data/items');
 const app = express();
 
 app.use(bodyParser.json());
+app.use(express.json())
 app.use(cors());
 
 app.use((req, res, next) => {
