@@ -23,7 +23,6 @@ app.get("/", (req, res)=> {
 app.get('/items', async (req, res) => {
   const storedItems = await getStoredItems();
   await new Promise((resolve, reject) => setTimeout(() => resolve(), 2000));
-  res.send("Items");
   return res.json({ items: storedItems });
 });
 
