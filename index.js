@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-
+//p 
 const { getStoredItems, storeItems } = require('./data/items');
 
 const app = express();
@@ -13,6 +13,10 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   next();
 });
+
+app.get("/", (req, res)=> {
+  res.send("hello World");
+})
 
 app.get('/items', async (req, res) => {
   const storedItems = await getStoredItems();
